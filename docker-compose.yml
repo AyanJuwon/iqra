@@ -1,0 +1,25 @@
+services:  
+  webserver:
+    container_name: iqra-webserver
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/html
+    networks:
+      - iqra_laravel
+
+  app:
+    container_name: iqra-app
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/var/www/html
+    networks:
+      - iqra_laravel
+
+networks:
+  iqra_laravel:
+    driver: bridge

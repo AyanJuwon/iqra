@@ -66,10 +66,7 @@
                                         <a class="nav-link" href="#document_info" role="tab"
                                             data-toggle="tab">@lang('student.document_info')</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#previous_school_info" role="tab"
-                                            data-toggle="tab">@lang('student.previous_school_info')</a>
-                                    </li>
+                                 
                                     <li class="nav-item">
                                         <a class="nav-link" href="#Other_info" role="tab"
                                             data-toggle="tab">@lang('student.Other_info')</a>
@@ -77,6 +74,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#custom_field" role="tab"
                                             data-toggle="tab">@lang('student.custom_field')</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#previous_school_info" role="tab"
+                                            data-toggle="tab">@lang('student.previous_school_info')</a>
                                     </li>
                                     <li class="nav-item flex-grow-1 text-right">
                                         <button class="primary-btn fix-gr-bg submit">
@@ -489,6 +490,11 @@
                                                                                     name="photo" id="addStudentImage">
                                                                             </button>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 mt-15">
+                                                                        <img class="previewImageSize {{ @$student->student_photo ? '' : 'd-none' }}"
+                                                                        src="{{ @$student->student_photo ? asset($student->student_photo) : '' }}"
+                                                                        alt="" id="studentImageShow" style="border-radius: 100px;" height="100%" width="100%">
                                                                     </div>
                                                                 </div>
                                                             @endif
