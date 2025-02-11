@@ -50,15 +50,18 @@
                                         <a class="nav-link active" href="#personal_info" role="tab"
                                             data-toggle="tab">@lang('student.personal_info')</a>
                                     </li>
-                                   
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#parents_and_guardian_info" role="tab"
+                                            data-toggle="tab">@lang('student.parents_and_guardian_info')</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#document_info" role="tab"
                                             data-toggle="tab">@lang('student.document_info')</a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link" href="#previous_school_info" role="tab"
                                             data-toggle="tab">@lang('student.previous_school_info')</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a class="nav-link" href="#Other_info" role="tab"
                                             data-toggle="tab">@lang('student.Other_info')</a>
@@ -66,10 +69,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#custom_field" role="tab"
                                             data-toggle="tab">@lang('student.custom_field')</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#parents_and_guardian_info" role="tab"
-                                            data-toggle="tab">@lang('student.parents_and_guardian_info')</a>
                                     </li>
                                     <li class="nav-item flex-grow-1 text-right">
                                         {{-- <div class="row">
@@ -595,10 +594,6 @@
                                                             @if (is_show('photo'))
                                                                 <div class="col-lg-6 mt-4">
                                                                     <div class="primary_input">
-                                                                        <div class="col-md-12 mt-15">
-                                                                            <img class="d-none rounded-circle" src="" alt="" id="studentImageShow" height="100px" width="100px">
-                                                                        </div>
-    
                                                                         <div class="primary_file_uploader">
                                                                             <input class="primary_input_field form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}"
                                                                                 type="text" id="placeholderPhoto"
@@ -608,11 +603,10 @@
                                                                                 <label class="primary-btn small fix-gr-bg"
                                                                                     for="addStudentImage">{{ __('common.browse') }}</label>
                                                                                 <input type="file" class="d-none"
-                                                                                    name="photo" id="addStudentImage" onchange="previewImage(event)">
+                                                                                    name="photo" id="addStudentImage">
                                                                             </button>
                                                                         </div>
                                                                     </div>
-                                              
                                                                     @if ($errors->has('photo'))
                                                                         <span class="text-danger">
                                                                             {{ $errors->first('photo') }}
@@ -958,8 +952,36 @@
                                                             @endif
                                                         </div>
                                                     </div>
+                                                </div> 
+                                                    <div class="col-lg-12">
+                                                        <div class="form-section">
+                                                            <div class="row">
+                                                                @if (is_show('previous_school_details'))
+                                                                    <div class="col-lg-12">
+                                                                        <div class="primary_input ">
+                                                                            <label class="primary_input_label"
+                                                                                for="">@lang('student.previous_school_details')
+                                                                                @if (is_required('previous_school_details') == true)
+                                                                                    <span class="text-danger"> *</span>
+                                                                                @endif
+                                                                            </label>
+                                                                            <textarea class="primary_input_field form-control{{ $errors->has('previous_school_details') ? ' is-invalid' : '' }}"
+                                                                                cols="0" rows="5" name="previous_school_details">{{ old('previous_school_details') }}</textarea>
+    
+    
+                                                                            @if ($errors->has('previous_school_details'))
+                                                                                <span class="text-danger">
+                                                                                    {{ $errors->first('previous_school_details') }}
+                                                                                </span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="parents_and_guardian_info">
                                             <div class="row pt-4 row-gap-24">
@@ -2018,35 +2040,7 @@
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="previous_school_info">
-                                            <div class="row pt-4 row-gap-24">
-                                                <div class="col-lg-12">
-                                                    <div class="form-section">
-                                                        <div class="row">
-                                                            @if (is_show('previous_school_details'))
-                                                                <div class="col-lg-12">
-                                                                    <div class="primary_input ">
-                                                                        <label class="primary_input_label"
-                                                                            for="">@lang('student.previous_school_details')
-                                                                            @if (is_required('previous_school_details') == true)
-                                                                                <span class="text-danger"> *</span>
-                                                                            @endif
-                                                                        </label>
-                                                                        <textarea class="primary_input_field form-control{{ $errors->has('previous_school_details') ? ' is-invalid' : '' }}"
-                                                                            cols="0" rows="5" name="previous_school_details">{{ old('previous_school_details') }}</textarea>
-
-
-                                                                        @if ($errors->has('previous_school_details'))
-                                                                            <span class="text-danger">
-                                                                                {{ $errors->first('previous_school_details') }}
-                                                                            </span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="Other_info">
                                             <div class="row pt-4 row-gap-24">
@@ -2399,18 +2393,6 @@
 @section('script')
     <script src="{{ asset('public/backEnd/js/croppie.js') }}"></script>
     <script src="{{ asset('public/backEnd/js/st_addmision.js') }}"></script>
-
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('studentImageShow');
-                output.src = reader.result;
-                output.classList.remove('d-none');
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
     <script>
         $(document).ready(function() {
             var currentDate = new Date();

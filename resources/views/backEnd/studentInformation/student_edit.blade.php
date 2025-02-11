@@ -75,10 +75,7 @@
                                         <a class="nav-link" href="#custom_field" role="tab"
                                             data-toggle="tab">@lang('student.custom_field')</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#previous_school_info" role="tab"
-                                            data-toggle="tab">@lang('student.previous_school_info')</a>
-                                    </li>
+                                   
                                     <li class="nav-item flex-grow-1 text-right">
                                         <button class="primary-btn fix-gr-bg submit">
                                             <span class="ti-check"></span>
@@ -476,6 +473,11 @@
                                                             @endif
                                                             @if (is_show('photo'))
                                                                 <div class="col-lg-6 mt-4">
+                                                                    <div class="col-md-12 mt-15">
+                                                                        <img class="m-2 previewImageSize {{ @$student->student_photo ? '' : 'd-none' }}"
+                                                                        src="{{ @$student->student_photo ? asset($student->student_photo) : '' }}"
+                                                                        alt="" id="studentImageShow" style="border-radius: 100px;" height="100%" width="100%">
+                                                                    </div>
                                                                     <div class="primary_input">
                                                                         <div class="primary_file_uploader">
                                                                             <input class="primary_input_field"
@@ -491,18 +493,10 @@
                                                                             </button>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12 mt-15">
-                                                                        <img class="previewImageSize {{ @$student->student_photo ? '' : 'd-none' }}"
-                                                                        src="{{ @$student->student_photo ? asset($student->student_photo) : '' }}"
-                                                                        alt="" id="studentImageShow" style="border-radius: 100px;" height="100%" width="100%">
-                                                                    </div>
+                                                                  
                                                                 </div>
                                                             @endif
-                                                            <div class="col-md-12 mt-15">
-                                                                <img class="previewImageSize {{ @$student->student_photo ? '' : 'd-none' }}"
-                                                                src="{{ @$student->student_photo ? asset($student->student_photo) : '' }}"
-                                                                alt="" id="studentImageShow" height="100%" width="100%">
-                                                            </div>
+                                                             
                                                         </div>
                                                     </div>
                                                 </div>
@@ -766,6 +760,31 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-section">
+                                                                <div class="row">
+                                                                    @if (is_show('previous_school_details'))
+                                                                        <div class="col-lg-12">
+                                                                            <div class="primary_input">
+                                                                                <label class="primary_input_label"
+                                                                                    for="">@lang('student.previous_school_details')
+                                                                                    @if (is_required('previous_school_details') == true)
+                                                                                        <span class="text-danger"> *</span>
+                                                                                    @endif
+                                                                                </label>
+                                                                                <textarea class="primary_input_field form-control" cols="0" rows="4" name="previous_school_details">{{ $student->previous_school_details }}</textarea>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1824,35 +1843,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="previous_school_info">
-                                            <div class="row pt-4 row-gap-24">
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-section">
-                                                                <div class="row">
-                                                                    @if (is_show('previous_school_details'))
-                                                                        <div class="col-lg-12">
-                                                                            <div class="primary_input">
-                                                                                <label class="primary_input_label"
-                                                                                    for="">@lang('student.previous_school_details')
-                                                                                    @if (is_required('previous_school_details') == true)
-                                                                                        <span class="text-danger"> *</span>
-                                                                                    @endif
-                                                                                </label>
-                                                                                <textarea class="primary_input_field form-control" cols="0" rows="4" name="previous_school_details">{{ $student->previous_school_details }}</textarea>
-
-
-                                                                            </div>
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
                                         <div role="tabpanel" class="tab-pane fade" id="Other_info">
                                             <div class="row">
                                                 <div class="col-lg-12">
